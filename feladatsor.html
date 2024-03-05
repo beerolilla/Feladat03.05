@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Számonkérés</title>
+    <style>
+        #square {
+          width: 50px;
+          height: 50px;
+          background-color: #FF0000;
+          position: absolute;
+        }
+
+        #DobozosCica {
+    transition: opacity 5s ease;
+        }
+      </style>
+</head>
+<body>
+    <h1>1-es feladat</h1>
+        <input type="text" id="szovegmezo" oninput="KarakterSzamlalo()">
+        <p id="Karakterszam"></p>
+    
+    <script>
+        function KarakterSzamlalo(){
+            let Szovegelo=document.getElementById("szovegmezo").value;
+            let Karakterszam=Szovegelo.length;
+            
+            document.getElementById("Karakterszam").innerText="Karakterek száma: "+Karakterszam;
+        }
+    </script>
+
+    <hr>
+    <h1>2-es feladat</h1>
+    X koordináta: <input type="number" id="xKoordinata" value="100"> <br>
+    Y koordináta: <input type="number" id="yKoordinata" value="100"> <br>
+    <button onclick="NegyzetRajz()" style="float: right;">Kirajzol</button>
+    <canvas id="myCanvas" width="1000" height="1000"></canvas>
+
+    <script>
+    function NegyzetRajz() {
+      let canvas=document.getElementById("myCanvas");
+      let ctx=canvas.getContext("2d");
+    
+      let x=document.getElementById("xKoordinata").value;
+      let y=document.getElementById("yKoordinata").value;
+      
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "#FF0033";
+      ctx.fillRect(x, y, 50, 50);
+    }
+    </script>
+
+    <hr>
+    <h1>3-mas feladat</h1>
+    <img id=DobozosCica src="hidingCat.jpg"><br>
+    <button onclick="Bujocska()">Bújócska</button>
+    
+    <script>
+        function Bujocska() {
+          let img=document.getElementById("DobozosCica");
+          let elbujt = Bujcivan(img);
+          img.style.opacity = elbujt ? "0" : "1";
+        }
+        
+        function Bujcivan(img) {
+          let eltunesErtek = window.getComputedStyle(img).getPropertyValue("opacity");
+          return eltunesErtek === "1";
+        }
+        </script>
+
+<hr>
+<h1>4-es feladat</h1>
+<input style="text" value="E-mail cím"><br>
+<input style="text" value="E-mail cím megerősítése"><br>
+<button>Ellenőrzés</button>
+</body>
+</html>
